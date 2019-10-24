@@ -11,10 +11,16 @@
  * @link        https://www.originphp.com
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
-/**
- * @deprecated This is being renamed and will be deprecated in the future, but do not display warning.
- */
-// @codeCoverageIgnoreStart
-class_alias('Origin\Core\Config', 'Origin\Core\Configure');
-# deprecationWarning('Use Origin\Core\Config instead of Origin\Core\Configure.');
-// @codeCoverageIgnoreEnd
+
+namespace Origin\Core\Exception;
+
+class InvalidArgumentException extends Exception
+{
+    public function __construct($message = null, $code = 500)
+    {
+        if ($message === null) {
+            $message = 'Invalid Argument';
+        }
+        parent::__construct($message, $code);
+    }
+}
